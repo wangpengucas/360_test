@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="ini_parser">
+</Property><Property Name="解决方案文件" Value="D:\360_test\360_test\ini_parser\ini_parser.sln">
+</Property><Property Name="Date" Value="2014年4月15日">
+</Property><Property Name="Time" Value="18:33:42">
+</Property></Properties><Event ErrorLevel="0" Project="ini_parser" Source="ini_parser.vcproj" Description="Converting project file 'D:\360_test\360_test\ini_parser\ini_parser.vcproj'.">
+</Event><Event ErrorLevel="1" Project="ini_parser" Source="ini_parser.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="0" Project="ini_parser" Source="ini_parser.vcproj" Description="Done converting to new project file 'D:\360_test\360_test\ini_parser\ini_parser.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="ini_parser" Source="ini_parser.vcproj" Description="Converted">
+</Event></UpgradeLog>
