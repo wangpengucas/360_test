@@ -149,10 +149,51 @@ void test_ProxUrlExtractor_Extract2()
     }
 }
 
+void test_ProxUrlExtractor_Extract3()
+{
+	using namespace qh;
+	ProxyURLExtractor::KeyItems keys;
+	keys.insert("a");
+	keys.insert("u");
+	keys.insert("url");
+	keys.insert("curl");
+	keys.insert("query");
+	keys.insert("uri");
+
+	std::string test_data[][2] = {                                                                             
+		{"http://www.microsofttranslator.com/bv.aspx?from=&to=zh-chs&xx&x&query=http://hnujug.com/", "http://hnujug.com/"}
+	};
+
+
+	bool all_test_ok = true;
+	for (size_t i = 0; i < H_ARRAY_SIZE(test_data); i++)
+	{
+		if (ProxyURLExtractor::Extract(keys, test_data[i][0]) != test_data[i][1]) {
+			fprintf(stderr, "test failed [%s]\n", test_data[i][0].data());
+			all_test_ok = false;
+			assert(false);
+		}
+		else 
+		{
+			//fprintf(stderr, "test OK [%s]\n", test_data[i][0].data());
+		}
+	}
+
+	if (all_test_ok)
+	{
+		printf("%s All test OK!\n", __FUNCTION__);
+	} 
+	else 
+	{
+		printf("%s test failed!\n", __FUNCTION__);
+	}
+}
+
 int main(int argc, char* argv[])
 {
     test_ProxUrlExtractor_Extract1();
     test_ProxUrlExtractor_Extract2();
+	test_ProxUrlExtractor_Extract3();
 #ifdef WIN32
     system("pause");
 #endif

@@ -107,18 +107,35 @@ namespace qh
         std::string key;
         while (!token.isEnd()) {
             key = token.nextString('=');
-			for(int i=0;i<key.size();i++)
+			//for(int i=0;i<key.size();i++)
+			//{
+			//	if(key[i]=='&'){
+	
+			//		key=key.substr(i+1,key.size());
+			//	}
+			//}
+			for(std::string::iterator iter=key.begin();iter!=key.end();)
 			{
-				if(key[i]=='&'){
+				if(*iter=='&'){
 					/**
 					* case 4: 
 					*  raw_url="http://www.microsofttranslator.com/bv.aspx?from=&to=zh-chs&xxx&query=http://hnujug.com/"
 					*  sub_url="http://hnujug.com/"
 					*/
-					key=key.substr(i+1,key.size());
+					/**
+					* case 5: 
+					*  raw_url="http://www.microsofttranslator.com/bv.aspx?from=&to=zh-chs&xx&x&query=http://hnujug.com/"
+					*  sub_url="http://hnujug.com/"
+					*/
+					key=key.assign(++iter,key.end());
+					iter=key.begin();
 				}
+				else
+					iter++;
+
 			}
             if (keys.find(key) != keys.end()) {
+
                 const char* curpos = token.getCurReadPos();
                 int nreadable = token.getReadableSize();
 
