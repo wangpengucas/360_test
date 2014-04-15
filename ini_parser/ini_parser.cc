@@ -39,6 +39,18 @@ namespace qh
 		delete[] char_line_seperator;
 		return 1;
 	}
+
+	bool INIParser::Parse(const std::string& ini_file_path,const std::string& line_seperator , const std::string& key_value_seperator )
+	{
+		std::ifstream in(ini_file_path.c_str());
+		std::string content;
+		while (getline(in, content));// ÖğĞĞ¶ÁÈ¡
+		in.close();
+		Parse(content.c_str(), strlen(content.c_str()), line_seperator , key_value_seperator );
+		return 1;
+	}
+
+
 	const std::string& INIParser::Get(const std::string& key, bool* found)
 	{
 		std::string value;

@@ -3,6 +3,8 @@
 #include <map>
 #include <assert.h>
 #include <string>
+#include <fstream>
+#include <iostream>
 namespace qh
 {
     class INIParser
@@ -14,7 +16,7 @@ namespace qh
         //! \brief 解析一个磁盘上的INI文件
         //! \param[in] - const std::string & ini_file_path
         //! \return - bool
-        bool Parse(const std::string& ini_file_path);
+        bool Parse(const std::string& ini_file_path,const std::string& line_seperator = "\n", const std::string& key_value_seperator = "=");
 
         //! \brief 解析一段形如INI格式的内存数据。
         //!   例如：ini_data="a:1||b:2||c:3"

@@ -114,6 +114,48 @@ void test5()//value多位的情况
 	assert(c == "3333");
 	delete &c;
 }
+void test6()//value多位的情况
+{
+	using namespace qh;
+	INIParser parser;
+	if (!parser.Parse("test1.ini", "||", "=")) {
+		assert(false);
+	}
+
+	const std::string& a = parser.Get("a", NULL);
+	assert(a == "1");
+	delete &a;
+
+	const std::string& bvalue = parser.Get("b", NULL);
+	std::string b = bvalue;
+	assert(b == "2");
+	delete &bvalue;
+
+	const std::string& c = parser.Get("c", NULL);
+	assert(c == "3");
+	delete &c;
+}
+void test7()//value多位的情况
+{
+	using namespace qh;
+	INIParser parser;
+	if (!parser.Parse("test2.ini","||", ":")) {
+		assert(false);
+	}
+
+	const std::string& a = parser.Get("a", NULL);
+	assert(a == "1");
+	delete &a;
+
+	const std::string& bvalue = parser.Get("b", NULL);
+	std::string b = bvalue;
+	assert(b == "2");
+	delete &bvalue;
+
+	const std::string& c = parser.Get("c", NULL);
+	assert(c == "322");
+	delete &c;
+}
 int main(int argc, char* argv[])
 {
     //TODO 在这里添加单元测试，越多越好，代码路径覆盖率越全越好
@@ -123,6 +165,8 @@ int main(int argc, char* argv[])
 	test3();
 	test4();
 	test5();
+	test6();
+	test7();
 	std::cout<<"测试用例均通过O(∩_∩)O~"<<std::endl;
     return 0;
 }

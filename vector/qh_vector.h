@@ -59,7 +59,7 @@ namespace qh
         // set
 		void reserve(size_t size);
         void push_back(const T& element);
-        void pop_back(const T& element);
+        void pop_back( T& element);
 		void resize(size_t size);
         //void resize();
         //void reserve();
@@ -89,7 +89,7 @@ namespace qh
 	T* vector<T>::begin()
 	{
 		assert(size_>0);
-		return *data_;
+		return data_;
 	}
 
 
@@ -127,16 +127,18 @@ namespace qh
 			cap_+=cap_default;
 			reserve(cap_);
 		}
-		*(data_+size_+1) = element;
+		*(data_+size_) = element;
 		size_++;
 	}
 
 
 	template<class T>
-	void vector<T>::pop_back(const T& element)
+	void vector<T>::pop_back( T& element)
 	{
 		assert(size_);
+		element = *(data_+size_-1);
 		size_--;
+
 	}
 
 
@@ -167,7 +169,7 @@ namespace qh
 	template<class T>
 	bool vector<T>::empty()
 	{
-		return size_>0?true:false;
+		return size_>0?false:true;
 	}
 }
 
